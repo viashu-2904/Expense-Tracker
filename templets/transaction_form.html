@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}{{ 'Edit' if item else 'Add' }} transaction{% endblock %}{% block content %}
+<section class="form-card card"><div class="eyebrow">TRANSACTION</div><h1>{{ 'Edit transaction' if item else 'Add a transaction' }}</h1>
+<form method="post"><label>Type</label><select name="kind"><option value="expense" {% if not item or item.kind=='expense' %}selected{% endif %}>Expense</option><option value="income" {% if item and item.kind=='income' %}selected{% endif %}>Income</option></select>
+<label>Title</label><input name="title" required maxlength="100" value="{{ item.title if item else '' }}" placeholder="e.g. Grocery shopping">
+<label>Category</label><select name="category">{% for c in categories %}<option value="{{ c }}" {% if item and item.category==c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select>
+<label>Amount (₹)</label><input type="number" name="amount" min="0.01" step="0.01" required value="{{ item.amount if item else '' }}">
+<label>Date</label><input type="date" name="txn_date" required value="{{ item.txn_date if item else today }}">
+<label>Notes (optional)</label><textarea name="notes" rows="3">{{ item.notes if item else '' }}</textarea>
+<div class="form-actions"><button class="primary">Save transaction</button><a class="secondary button-link" href="{{ url_for('transactions') }}">Cancel</a></div></form></section>{% endblock %}

@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Sign in{% endblock %}{% block content %}
+<section class="auth card"><div class="eyebrow">WELCOME BACK</div><h1>Take control of your money.</h1><p class="muted">Sign in to view your personal finance dashboard.</p>
+<form method="post"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"><label>Password</label><input type="password" name="password" required><button class="primary">Sign in</button></form>
+<p class="muted">New here? <a href="{{ url_for('register') }}">Create an account</a></p></section>{% endblock %}

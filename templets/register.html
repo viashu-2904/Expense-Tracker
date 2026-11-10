@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Create account{% endblock %}{% block content %}
+<section class="auth card"><div class="eyebrow">GET STARTED</div><h1>Create your account.</h1><form method="post"><label>Name</label><input name="name" required maxlength="80"><label>Email</label><input type="email" name="email" required><label>Password</label><input type="password" name="password" minlength="8" required><button class="primary">Create account</button></form><p class="muted">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p></section>{% endblock %}
